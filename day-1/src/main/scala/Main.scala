@@ -25,11 +25,7 @@ import scala.util.matching.Regex
         val matches = digits.filter(line.contains(_))
         val first = matches.minBy(line.indexOf(_))
         val last = matches.maxBy(line.lastIndexOf(_))
-        val sum =
-          (if first.length == 1 then first else convertToNumberString(first))
-            +
-              (if last.length == 1 then last else convertToNumberString(last))
-        println(s"$line => $first + $last => $sum")
+        val sum = convertToNumberString(first) + convertToNumberString(last)
         sum.toInt
       })
       .reduce(_ + _)
